@@ -1,0 +1,206 @@
+{
+  "menuSettings"            : [
+    {
+      "addonKey"            : "drink",
+      "addonItems"          : [
+        {
+          "name"            : "Regular Coke"
+        },
+        {
+          "name"            : "Regular Sprite"
+        },
+        {
+          "name"            : "Large Coke",
+          "addedPrice"      : 10
+        },
+        {
+          "name"            : "Large Sprite",
+          "addedPrice"      : 10
+        }
+      ]
+    },
+    {
+      "addonKey"            : "fries",
+      "addonItems"          : [
+        {
+          "name"            : "Regular Fries"
+        },
+        {
+          "name"            : "Large Fries",
+          "addedPrice"      : 30
+        }
+      ]
+    },
+    {
+      "addonKey"            : "sides",
+      "addonItems"          : [
+        {
+          "name"            : "Salad"
+        },
+        {
+          "name"            : "Bread"
+        },
+        {
+          "name"            : "Soup"
+        }
+      ]
+    },
+    {
+      "addonKey"            : "milktea-size",
+      "addonItems"          : [
+        {
+          "name"            : "Tall"
+        },
+        {
+          "name"            : "Grande",
+          "addedPrice"      : 10
+        },
+        {
+          "name"            : "Venti",
+          "addedPrice"      : 15
+        }
+      ]
+    }
+  ],
+
+
+  "menu"               : [
+    {
+      "menuTitle"           : "Main",
+      "menuItems"           : [
+        {
+          "name"            : "Burger",
+          "price"           : 80,
+          "attributes"      : [
+            {
+              "name"        : "Drink",
+              "type"        : "addon",
+              "addonKey"    : "drink"
+            },
+            {
+              "name"        : "Fries",
+              "type"        : "addon",
+              "addonKey"    : "fries"
+            },
+            {
+              "name"        : "Ala Carte",
+              "type"        : "checkbox",
+              "addedPrice"  : -20
+            }
+          ]
+        },
+        {
+          "name"            : "Spaghetti",
+          "price"           : 90,
+          "attributes"      : [
+            {
+              "name"        : "Drink",
+              "type"        : "addon",
+              "addonKey"    : "drink"
+            },
+            {
+              "name"        : "Fries",
+              "type"        : "addon",
+              "addonKey"    : "fries"
+            },
+            {
+              "name"        : "Ala Carte",
+              "type"        : "checkbox",
+              "addedPrice"  : -20
+            }
+          ]
+        },
+        {
+          "name"            : "Meal of the Day",
+          "price"           : 100,
+          "attributes"      : [
+            {
+              "name"        : "Drink",
+              "type"        : "addon",
+              "addonKey"    : "drink"
+            },
+            {
+              "name"        : "Fries",
+              "type"        : "addon",
+              "addonKey"    : "fries"
+            },
+            {
+              "name"        : "Sides",
+              "type"        : "addon",
+              "addonKey"    : "sides"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "menuTitle"           : "Drinks",
+      "menuItems"            : [
+        {
+          "name"            : "Regular Coke",
+          "price"           : 40
+        },
+        {
+          "name"            : "Regular Sprite",
+          "price"           : 40
+        },
+        {
+          "name"            : "Milk Tea",
+          "price"           : 80,
+          "attributes"      : [
+            {
+              "name"        : "Size",
+              "type"        : "addon",
+              "addonKey"    : "milktea-size"
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "menuTitle"           : "Sides",
+      "menuItems"           : [
+        {
+          "name"            : "Salad",
+          "price"           : 50
+        },
+        {
+          "name"            : "Bread",
+          "price"           : 30
+        },
+        {
+          "name"            : "Soup",
+          "price"           : 40
+        },
+        {
+          "name"            : "Rice",
+          "price"           : 10
+        }
+      ]
+    },
+    {
+      "menuTitle"           : "Promos",
+      "menuItems"           : [
+        {
+          "name"            : "Barkada Meal",
+          "price"           : 500
+        },
+        {
+          "name"            : "Family Meal",
+          "price"           : 800
+        },
+        {
+          "name"            : "Date Meal",
+          "price"           : 250,
+          "attributes"      : [
+            {
+              "name"        : "With third-wheeler?",
+              "type"        : "checkbox",
+              "addedPrice"  : 50
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}

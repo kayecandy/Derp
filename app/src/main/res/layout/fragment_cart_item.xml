@@ -1,0 +1,53 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    tools:context="com.artise.derp.display.cart.CartItemFragment"
+    android:orientation="horizontal"
+    android:padding="20dp"
+    android:id="@+id/cartItemLayout">
+
+    <!-- TODO: Update blank fragment layout -->
+
+
+    <ImageView
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/background_border"
+        android:id="@+id/imageView"
+        android:layout_width="40dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:text="Burger"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/productName"
+        android:textSize="30sp" />
+
+    <TextView
+        android:text="(50 Php)"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/productPrice"
+        android:textSize="20sp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginRight="10dp" />
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="x1"
+        android:id="@+id/quantity"
+        android:textStyle="normal|bold"
+        android:textSize="30dp"
+        android:layout_gravity="center_vertical"
+        android:layout_marginLeft="10dp" />
+
+    <ImageView
+        android:layout_width="50dp"
+        android:layout_height="match_parent"
+        app:srcCompat="@drawable/trash"
+        android:id="@+id/trashIcon" />
+
+</LinearLayout>

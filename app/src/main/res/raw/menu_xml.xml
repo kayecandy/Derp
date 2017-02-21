@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menudata>
+
+    <menusettings>
+        <addons addon-key="drink">
+            <addon>Regular Coke</addon>
+            <addon>Regular Sprite</addon>
+            <addon added-price="10">Large Coke</addon>
+            <addon added-price="10">Large Sprite</addon>
+        </addons>
+
+        <addons addon-key="fries">
+            <addon>Regular Fries</addon>
+            <addon added-price="30">Large Fries</addon>
+        </addons>
+
+        <addons addon-key="sides">
+            <addon>Salad</addon>
+            <addon>Bread</addon>
+            <addon>Soup</addon>
+        </addons>
+
+        <addons addon-key="milktea-size">
+            <addon>Tall</addon>
+            <addon added-price="10">Grande</addon>
+            <addon added-price="15">Venti</addon>
+        </addons>
+    </menusettings>
+
+
+    <menuitems>
+        <menu name="Main">
+            <item name="Burger" price="80">
+                <attribute type="addon" addon-key="drink">Drink</attribute>
+                <attribute type="addon" addon-key="fries">Fries</attribute>
+                <attribute type="checkbox" added-price="-20">Ala Carte</attribute>
+            </item>
+            <item name="Spaghetti" price="90">
+                <attribute type="addon" addon-key="drink">Drink</attribute>
+                <attribute type="addon" addon-key="fries">Fries</attribute>
+                <attribute type="checkbox" added-price="-20">Ala Carte</attribute>
+            </item>
+            <item name="Meal of the Day" price="100">
+                <attribute type="addon" addon-key="drink">Drink</attribute>
+                <attribute type="addon" addon-key="fries">Fries</attribute>
+                <attribute type="addon" addon-key="sides">Sides</attribute>
+            </item>
+        </menu>
+
+        <menu name="Drinks">
+            <item name="Coke" price="40"></item>
+            <item name="Sprite" price="40"></item>
+            <item name="Milk Tea" price="80">
+                <attribute type="addon" addon-key="milktea-size">Size</attribute>
+            </item>
+
+        </menu>
+
+        <menu name="Sides">
+            <item name="Salad" price="50"></item>
+            <item name="Bread" price="30"></item>
+            <item name="Soup" price="40"></item>
+            <item name="Rice" price="10"></item>
+        </menu>
+
+        <menu name="Promos">
+            <item name="Barkada Meal" price="500"></item>
+            <item name="Family Meal" price="800"></item>
+            <item name="Date Meal" price="250">
+                <attribute type="checkbox" added-price="50">With third-wheeler?</attribute>
+            </item>
+        </menu>
+
+
+    </menuitems>
+
+
+</menudata>
