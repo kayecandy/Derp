@@ -1,4 +1,4 @@
-package com.artise.derp.display.options.types;
+package com.artise.derp.display.options.fixed;
 
 
 import android.os.Bundle;
@@ -16,10 +16,8 @@ public class QuantityOptionsFragment extends OptionsFragment {
 
     private int quantity = 1;
 
-
     public static QuantityOptionsFragment newInstance(int quantity){
         Bundle b = new Bundle();
-        b.putString("label", "Quantity");
         b.putInt("quantity", quantity);
 
         QuantityOptionsFragment fragment = new QuantityOptionsFragment();
@@ -29,11 +27,15 @@ public class QuantityOptionsFragment extends OptionsFragment {
         return fragment;
     }
 
-
     @Override
-    protected void readExtraBundle(Bundle bundle) {
-        quantity = bundle.getInt("quantity");
+    public void readBundle(Bundle bundle){
+        if(bundle != null){
+            label = "Quantity";
+
+            quantity = bundle.getInt("quantity");
+        }
     }
+
 
     @Override
     protected View initializeInput() {

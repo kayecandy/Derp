@@ -29,6 +29,10 @@ public class AddonOption extends Options {
         options.add(new Options(name, addedPrice));
     }
 
+    public ArrayList<Options> getOptions(){
+        return options;
+    }
+
     @Override
     public long getAddedPrice(){
         return  0;

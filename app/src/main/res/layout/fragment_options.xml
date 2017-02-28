@@ -3,7 +3,7 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
-    tools:context="com.artise.derp.display.options.types.QuantityOptionsFragment"
+    tools:context="com.artise.derp.display.options.fixed.QuantityOptionsFragment"
     android:id="@+id/optionsLayout">
 
     <!-- TODO: Update blank fragment layout -->

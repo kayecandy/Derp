@@ -105,6 +105,7 @@ public class SampleJSONMenuDataParser extends MenuDataParser {
                                     addedPrice = jsonMenuItemAddon.getLong("addedPrice");
 
                                 menuItem.addOptions(new CheckboxOption(jsonMenuItemAddon.getString("name"), addedPrice));
+
                             }else if(type.equals("addon")){
 
                                 menuItem.addOptions(m.getAddonOption(jsonMenuItemAddon.getString("addonKey")).duplicate(jsonMenuItemAddon.getString("name")));

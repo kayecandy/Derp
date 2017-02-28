@@ -99,11 +99,6 @@
               "addonKey"    : "drink"
             },
             {
-              "name"        : "Fries",
-              "type"        : "addon",
-              "addonKey"    : "fries"
-            },
-            {
               "name"        : "Ala Carte",
               "type"        : "checkbox",
               "addedPrice"  : -20

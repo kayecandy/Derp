@@ -3,7 +3,6 @@ package com.artise.derp.display.cart;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
-import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -14,10 +13,12 @@ import android.widget.TextView;
 import com.artise.derp.R;
 import com.artise.derp.data.datastructure.MenuItem;
 import com.artise.derp.data.datastructure.options.AddonOption;
+import com.artise.derp.data.datastructure.options.CheckboxOption;
 import com.artise.derp.data.datastructure.options.Options;
 import com.artise.derp.display.MainActivity;
-import com.artise.derp.display.options.types.AddonOptionsFragment;
+import com.artise.derp.display.options.custom.AddonOptionsFragment;
 import com.artise.derp.display.options.OptionsFragment;
+import com.artise.derp.display.options.custom.CheckboxOptionsFragment;
 
 import java.util.ArrayList;
 import java.util.HashMap;
@@ -84,9 +85,15 @@ public class CartItemFragment extends Fragment {
 
             ArrayList<Options> options = menuItem.getOptionsList();
             for(int i=0; i < options.size(); i++){
+                Class<?> optionClass = null;
                 if(options.get(i) instanceof AddonOption){
-                    optionsFragments.put(options.get(i), AddonOptionsFragment.newInstance(iMenuTitle, iMenuItem, i));
+                    optionClass = AddonOptionsFragment.class;
+                }else if(options.get(i) instanceof CheckboxOption){
+                    optionClass = CheckboxOptionsFragment.class;
                 }
+
+                optionsFragments.put(options.get(i), OptionsFragment.newInstance(optionClass, iMenuTitle, iMenuItem, i));
+
             }
         }
     }
@@ -118,7 +125,6 @@ public class CartItemFragment extends Fragment {
         trashIcon.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-//                getFragmentManager().beginTransaction().remove(f).commit();
 
                 MainActivity.cart.removeCartItem(menuItem, f);
 
@@ -130,17 +136,14 @@ public class CartItemFragment extends Fragment {
             @Override
             public void onClick(View v) {
 
-                ArrayList<OptionsFragment> options = new ArrayList<OptionsFragment>(optionsFragments.values());
 
-                for (int i=0; i < options.size(); i++){
-                    Log.d("Test Options", options.get(i).getLabel());
-                }
+                MainActivity.options.changeCustomOptions(optionsFragments);
 
-                MainActivity.options.changeCustomOptions(options);
-
-                Log.d("Test", "cliciked");
             }
         });
+
+        MainActivity.options.changeCustomOptions(optionsFragments);
+
 
         return v;
     }

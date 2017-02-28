@@ -2,6 +2,7 @@ package com.artise.derp.display.options;
 
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +11,7 @@ import android.widget.TextView;
 
 import com.artise.derp.R;
 import com.artise.derp.display.MainActivity;
+import com.artise.derp.data.datastructure.options.Options;
 
 /**
  * Created by Candice on 21/02/2017.
@@ -19,26 +21,64 @@ public abstract class OptionsFragment extends Fragment {
 
     protected String label;
 
+    protected int iMenuTitle;
+    protected int iMenuItem;
+    protected int iMenuItemOption;
+
+    protected Options option;
+
     protected View input;
     protected TextView optionsLabelText;
     protected LinearLayout optionsLayout;
 
 
-    protected abstract void readExtraBundle(Bundle bundle);
     protected abstract View initializeInput();
     public abstract String getInputValue();
 
 
+    public static OptionsFragment newInstance(Class<?> optionsFragmentSubclass, int iMenuTitle, int iMenuItem, int iMenuItemOption){
 
-    public String getLabel(){
-        return label;
+        Bundle b = new Bundle();
+
+        b.putInt("iMenuTitle", iMenuTitle);
+        b.putInt("iMenuItem", iMenuItem);
+        b.putInt("iMenuItemOption", iMenuItemOption);
+
+        try {
+
+            OptionsFragment fragment = (OptionsFragment) optionsFragmentSubclass.newInstance();
+
+            fragment.setArguments(b);
+
+            return fragment;
+
+        } catch (java.lang.InstantiationException e) {
+            e.printStackTrace();
+        } catch (IllegalAccessException e) {
+            e.printStackTrace();
+        }
+
+        return null;
+
+
     }
+
 
     public void readBundle(Bundle bundle){
         if(bundle != null){
-            label = bundle.getString("label");
 
-            readExtraBundle(bundle);
+            iMenuTitle = bundle.getInt("iMenuTitle");
+            iMenuItem = bundle.getInt("iMenuItem");
+            iMenuItemOption = bundle.getInt("iMenuItemOption");
+
+
+            option = MainActivity.menu.getMenuItemOptionAt(iMenuTitle, iMenuItem, iMenuItemOption);
+
+            label = option.getName();
+
+            Log.d("Test Options", label);
+
+
         }
     }
 
@@ -51,6 +91,7 @@ public abstract class OptionsFragment extends Fragment {
         optionsLayout = (LinearLayout)v.findViewById(R.id.optionsLayout);
 
         readBundle(getArguments());
+
 
         input = initializeInput();
         input.setLayoutParams(new LinearLayout.LayoutParams(

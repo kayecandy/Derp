@@ -12,9 +12,12 @@ import android.widget.LinearLayout;
 
 import com.artise.derp.R;
 import com.artise.derp.display.MainActivity;
-import com.artise.derp.display.options.types.QuantityOptionsFragment;
+
+import com.artise.derp.data.datastructure.options.Options;
+import com.artise.derp.display.options.fixed.QuantityOptionsFragment;
 
 import java.util.ArrayList;
+import java.util.HashMap;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -26,19 +29,44 @@ public class OptionsContainerFragment extends Fragment {
 
     private Button updateButton;
 
+    HashMap<Options, OptionsFragment> currentOptions;
+
+
+
+
 
     private void clearCustomOptions(){
-        customOptionsLayout.removeAllViews();
-    }
 
-    public void changeCustomOptions(ArrayList<OptionsFragment> options){
-        clearCustomOptions();
+        if(currentOptions != null){
 
-        for(int i=0; i < options.size(); i++){
-            getFragmentManager().beginTransaction().add(customOptionsLayout.getId(), options.get(i));
+            ArrayList<OptionsFragment> tempOptions = new ArrayList<>(currentOptions.values());
+
+            for(int i=0; i < currentOptions.size(); i++){
+                getFragmentManager().beginTransaction().remove(tempOptions.get(i)).commit();
+            }
+        }else{
+            Log.d("Test", "null options fragments");
         }
 
     }
+
+    public void changeCustomOptions(HashMap<Options, OptionsFragment> options){
+        if(currentOptions != options){
+            clearCustomOptions();
+
+            currentOptions = options;
+
+            ArrayList<OptionsFragment> tempOptions = new ArrayList<>(options.values());
+
+            for(int i=0; i < options.size(); i++){
+                getFragmentManager().beginTransaction().add(customOptionsLayout.getId(), tempOptions.get(i)).commit();
+            }
+
+        }
+
+
+    }
+
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -64,7 +92,7 @@ public class OptionsContainerFragment extends Fragment {
         updateButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Log.d("Test", f.getInputValue());
+
             }
         });
 
